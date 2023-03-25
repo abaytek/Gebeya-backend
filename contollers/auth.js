@@ -15,7 +15,7 @@ export const registerUser = async (req, res) => {
   if (error) {
     return res
       .status(400)
-      .json(error.details[0].message.trim().replaceAll('"', ''));
+      .json(error.details[0].message.trim());
   }
 
   let user = await User.findOne({ email: req.body.email });
@@ -49,7 +49,7 @@ export const loginUsers = async (req, res) => {
   if (error) {
     return res
       .status(400)
-      .json(error.details[0].message.trim().replaceAll('"', ''));
+      .json(error.details[0].message.trim());
   }
 
   const user = await User.findOne({ email: req.body.email });
